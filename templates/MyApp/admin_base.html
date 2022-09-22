@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/4e28144f1f.js" crossorigin="anonymous"></script>
+    <title>Admin · Home</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <a>Admin Dashboard</a>
+
+        <button>
+            <span class="label"><a href="{% url 'MyApp:logout' %}" class="logoutbtn"
+                    style="font-size:18px; text-align: center;">Logout</a></span>
+            <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                    <path fill="currentColor"
+                        d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"></path>
+                </svg>
+            </span>
+        </button>
+    </div>
+    <div class="sidebar">
+        <div class="userprofile">
+            <h2 style="color:white; font-family:sans-serif; padding-top:25px; text-align:center; margin:0px;">Welcome!
+            </h2>
+            <h4 style="color:white; font-family:sans-serif; text-align:center; padding-bottom:35px;">
+                {{request.user.username}}</h4>
+        </div>
+        <a href="{% url 'MyApp:admin_dashboard' %}"><i class="fa-solid fa-house-user"></i>Dashboard</a>
+        <a href="{% url 'MyApp:admin_patient' %}"><i class="fa-solid fa-calendar-check"></i>Patients</a>
+        <a href="{% url 'MyApp:admin_doctor' %}"><i class="fa-solid fa-calendar-check"></i>Doctors</a>
+        <a href="{% url 'MyApp:admin_appointment' %}"><i class="fa-solid fa-calendar-check"></i>Appointments</a>
+    </div>
+
+    <style>
+        body {
+            background-color: rgb(255, 255, 255);
+            padding: 0px;
+            margin-top: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+        }
+
+        .navbar {
+            overflow: hidden;
+            height: 75px;
+            width: 100%;
+            padding-top: 22px;
+            z-index: 1;
+            top: 0;
+            position: fixed;
+            display: block;
+            max-width: 1200px;
+            mask-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #ffffff 25%, #ffffff 75%, rgba(255, 255, 255, 0) 100%);
+            margin: 0 auto;
+            background-color: #caf1f3;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            font-size: 26px;
+            color: black;
+            text-align: center;
+            padding-left: 20px;
+            text-decoration: none;
+        }
+
+        .sidebar .userprofile {
+            background-color: #0e1326;
+            border-radius: 2px !important;
+            margin-top: -5px;
+
+        }
+
+        .sidebar {
+            padding-top: 0px;
+            border-radius: 15px !important;
+            width: 20%;
+            align-items: center;
+            height: 100%;
+            background-color: #0a0d19;
+            font-family: sans-serif;
+            font-size: 17px;
+            font-weight: normal;
+            position: fixed;
+            top: 67px;
+            left: 0;
+            bottom: 0;
+
+        }
+
+        .sidebar i {
+            padding-right: 10px;
+        }
+
+
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 25px;
+            text-decoration: none;
+        }
+
+        .icon {
+            float: left;
+
+            width: 30px;
+            height: 30px;
+        }
+
+        .sidebar a.active {
+            color: rgb(255, 206, 70);
+        }
+
+        .sidebar a:hover:not(.active) {
+            color: rgb(255, 206, 70);
+        }
+
+        @media screen and (max-width: 700px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            .sidebar a {
+                float: left;
+            }
+
+            div.content {
+                margin-left: 0;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            .sidebar a {
+                text-align: center;
+                float: none;
+            }
+        }
+
+        /* From uiverse.io by @mateusneves */
+        button {
+            float: right;
+            position: relative;
+            font-size: 14px;
+            letter-spacing: 3px;
+            height: 3em;
+            padding: 0 3em;
+            border: none;
+            background-color: #c41b54;
+            color: #fff;
+            text-transform: uppercase;
+            overflow: hidden;
+            border-radius: 5px;
+            margin-right: 20px;
+        }
+
+        button::before {
+            content: '';
+            display: block;
+            position: absolute;
+            z-index: 0;
+            bottom: 0;
+            left: 0;
+            height: 0px;
+            width: 100%;
+            background: rgb(196, 27, 84);
+            background: linear-gradient(90deg, rgba(196, 27, 84, 1) 20%, rgba(124, 7, 46, 1) 100%);
+            transition: 0.2s;
+        }
+
+        button .label {
+            position: relative;
+        }
+
+        button .icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 3em;
+            width: 3em;
+            position: absolute;
+            top: 3em;
+            right: 0;
+            opacity: 0;
+            transition: 0.4s;
+        }
+
+        button:hover::before {
+            height: 100%;
+        }
+
+        button:hover .icon {
+            top: 0;
+            opacity: 1;
+        }
+    </style>
+    {% block content_dashboard %}
+    {% endblock content_dashboard %}
+</body>
+
+</html>

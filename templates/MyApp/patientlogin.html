@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device=width, initial-scale=1.0">
+    <!-- CSS only -->
+    <!-- Template Stylesheet -->
+    <link href="{% static 'css/form.css' %}" rel="stylesheet">
+    <title>Admin Login · Talk To Doctor</title>
+
+</head>
+
+<body>
+
+    <body id="particles-js"></body>
+    <div class="animated bounceInDown">
+        <div class="container">
+            <span class="error animated tada" id="msg"></span>
+            <form name="form1" class="box" action="{% url 'MyApp:patientlogin' %}" method="POST">
+                {% csrf_token %}
+                <h4>Patient<span>Login</span></h4>
+                <h5>Sign in to your account.</h5>
+                <input type="text" name="username" required placeholder="Username" autocomplete="off">
+                <i class="typcn typcn-eye" id="eye"></i>
+                <input type="password" name="password" required placeholder="Passsword" id="pwd" autocomplete="off">
+                <label>
+                    <input type="checkbox">
+                    <span></span>
+                    <small class="rmb">Remember me</small>
+                </label>
+                <a href="#" class="forgetpass">Forgot Password?</a>
+                <input type="submit" value="Sign in" class="btn1">
+            </form>
+            <a href="{% url 'MyApp:patientsignup' %}" class="dnthave">New User? Sign up</a>
+        </div>
+    </div>
+
+    <!--/.signin-->
+</body>
+
+<script type="text/JavaScript">
+    var current = null;
+        document.querySelector('#email').addEventListener('focus', function (e) {
+            if (current) current.pause();
+            current = anime({
+                targets: 'path',
+                strokeDashoffset: {
+                    value: 0,
+                    duration: 700,
+                    easing: 'easeOutQuart'
+                },
+                strokeDasharray: {
+                    value: '240 1386',
+                    duration: 700,
+                    easing: 'easeOutQuart'
+                }
+            });
+        });
+        document.querySelector('#password').addEventListener('focus', function (e) {
+            if (current) current.pause();
+            current = anime({
+                targets: 'path',
+                strokeDashoffset: {
+                    value: -336,
+                    duration: 700,
+                    easing: 'easeOutQuart'
+                },
+                strokeDasharray: {
+                    value: '240 1386',
+                    duration: 700,
+                    easing: 'easeOutQuart'
+                }
+            });
+        });
+        document.querySelector('#submit').addEventListener('focus', function (e) {
+            if (current) current.pause();
+            current = anime({
+                targets: 'path',
+                strokeDashoffset: {
+                    value: -730,
+                    duration: 700,
+                    easing: 'easeOutQuart'
+                },
+                strokeDasharray: {
+                    value: '530 1386',
+                    duration: 700,
+                    easing: 'easeOutQuart'
+                }
+            });
+        });
+</script>
+
+</html>

@@ -1,0 +1,150 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device=width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <title>Admin Sign Up · Talk To Doctor</title>
+
+</head>
+<style>
+    @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400");
+
+    body,
+    html {
+        font-family: "Source Sans Pro", sans-serif;
+        background-color: #1d243d;
+        padding: 0;
+        margin: 0;
+    }
+
+    h4 {
+        font-family: "Source Sans Pro", sans-serif;
+        color: #5c6bc0;
+        font-size: 18px;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    #particles-js {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+    .container {
+        margin: 0;
+        top: 50px;
+        left: 50%;
+        position: absolute;
+        transform: translateX(-50%);
+        background-color: rgb(33, 41, 66);
+        border-radius: 9px;
+        border-top: 10px solid #79a6fe;
+        border-bottom: 10px solid #8bd17c;
+        width: 400px;
+        color: #fff;
+        box-shadow: 1px 1px 108.8px 19.2px rgb(25, 31, 53);
+    }
+
+    .error {
+        background: #ff3333;
+        text-align: center;
+        width: 337px;
+        height: 20px;
+        padding: 2px;
+        border: 0;
+        border-radius: 5px;
+        margin: 10px auto 10px;
+        position: absolute;
+        top: 31%;
+        left: 7.2%;
+        color: white;
+        display: none;
+    }
+
+    .footer {
+        position: relative;
+        left: 0;
+        bottom: 0;
+        top: 605px;
+        width: 100%;
+        color: #78797d;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .footer .fa {
+        color: #7f5feb;
+    }
+
+    .btn1 {
+        border: 0;
+        background: #7f5feb;
+        color: #dfdeee;
+        border-radius: 100px;
+        width: 340px;
+        height: 49px;
+        font-size: 16px;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+
+    h5 {
+        font-family: "Source Sans Pro", sans-serif;
+        font-size: 13px;
+        color: #a1a4ad;
+        letter-spacing: 1.5px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    h4 span {
+        color: #dfdeee;
+        font-weight: lighter;
+    }
+
+    .alignn {
+        text-align: center;
+    }
+
+    a {
+        color: #5c7fda;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<body>
+
+    <body id="particles-js"></body>
+    <div class="animated bounceInDown">
+        <div class="container">
+            <form name="form1" method="POST">
+                {% csrf_token %}
+                <h4>Admin<span>Sign Up</span></h4>
+                <h5>Sign up to create account.</h5>
+                {{ admin_form|crispy }}
+                <button type="submit" class="btn1 btn-primary m-3">Signup</button>
+            </form>
+            <div class="alignn">
+                <a href="{% url 'MyApp:adminlogin' %}" class="dnthave">Already Have an account? Sign in</a>
+
+            </div>
+        </div>
+    </div>
+
+    <!--/.signin-->
+</body>
+
+
+</html>

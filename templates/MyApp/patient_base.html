@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/4e28144f1f.js" crossorigin="anonymous"></script>
+    <title>Patient · Home</title>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a>Patient Information</a>
+            </li>
+            <li>
+                <a href="#">About</a>
+            </li>
+            <li>
+                <a href="#">Services</a>
+            </li>
+            <li>
+                <a href="{% url 'MyApp:logout' %}" class="logoutbtn">Logout</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="sidebar">
+        <div class="userprofile">
+            <h2
+                style="color:white; font-family:sans-serif; padding-top:30px; text-align:center; margin:0px; font-size:20px;">
+                Welcome!</h2>
+            <h4 style="color:white; font-family:sans-serif; text-align:center; padding-bottom:35px;font-size:20px;">
+                {{request.user.username}}</h4>
+        </div>
+        <a href="{% url 'MyApp:patient_dashboard' %}"><i class="fa-solid fa-house-user"></i>Dashboard</a>
+        <a href="{% url 'MyApp:patient_book_appointment' %}"><i class="fa-solid fa-calendar-check"></i>Book an
+            Appointment</a>
+        <a href="{% url 'MyApp:patient_my_appointment' %}"><i class="fa-solid fa-calendar-check"></i>My
+            Appointments</a>
+    </div>
+
+    <style>
+        body {
+            background-color: rgb(255, 255, 255);
+            padding: 0px;
+            margin-top: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+        }
+
+        nav {
+            max-width: 1200px;
+            mask-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #ffffff 25%, #ffffff 75%, rgba(255, 255, 255, 0) 100%);
+            margin: 0 auto;
+            background-color: #caf1f3;
+        }
+
+        nav ul {
+            text-align: center;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0) 100%);
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
+        }
+
+        nav ul li {
+            display: inline-block;
+        }
+
+        nav ul li a {
+            padding: 18px;
+            font-family: "Open Sans";
+            text-transform: uppercase;
+            color: rgba(0, 35, 122, 0.5);
+            font-size: 18px;
+            text-decoration: none;
+            display: block;
+        }
+
+        nav ul li a:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(0, 35, 122, 0.7);
+        }
+
+        .sidebar .userprofile {
+            background-color: #0e1326;
+            border-radius: 2px !important;
+            margin-top: -5px;
+
+        }
+
+        .sidebar {
+            padding-top: 0px;
+            border-radius: 15px !important;
+            width: 20%;
+            align-items: center;
+            height: 100%;
+            background-color: #1d243d;
+            font-family: sans-serif;
+            font-size: 17px;
+            font-weight: normal;
+            position: fixed;
+            top: 67px;
+            left: 0;
+            bottom: 0;
+
+        }
+
+        .sidebar i {
+            padding-right: 10px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 25px;
+            text-decoration: none;
+        }
+
+        .icon {
+            float: left;
+            width: 30px;
+            height: 30px;
+        }
+
+        .sidebar a.active {
+            color: rgb(255, 206, 70);
+        }
+
+        .sidebar a:hover:not(.active) {
+            color: rgb(255, 206, 70);
+        }
+
+        @media screen and (max-width: 700px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            .sidebar a {
+                float: left;
+            }
+
+            div.content {
+                margin-left: 0;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            .sidebar a {
+                text-align: center;
+                float: none;
+            }
+        }
+    </style>
+    {% block content_dashboard %}
+    {% endblock content_dashboard %}
+</body>
+
+</html>
